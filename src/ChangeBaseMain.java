@@ -5,19 +5,13 @@ import java.util.Scanner;
 public class ChangeBaseMain {
     public static void main(String[] args) {
 
-        File file;
+        String path = new File("src/").exists() ? "src/" : "";
+        path += new File(path + "Input.txt").exists() ? "Input.txt" : "";
 
-        if ((file = new File("src")).exists()) {
-            if ((file = new File("src/Input.txt")).exists())
-                runFromFile(file);
-            else
-                runFromKeyboard();
-        } else {
-            if ((file = new File("Input.txt")).exists())
-                runFromFile(file);
-            else
-                runFromKeyboard();
-        }
+        if (path.contains("Input.txt"))
+            runFromFile(new File(path));
+        else
+            runFromKeyboard();
     }
 
 
