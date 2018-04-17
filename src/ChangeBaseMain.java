@@ -15,13 +15,21 @@ public class ChangeBaseMain {
     }
 
 
-    public static int changeBase(int input, int base) {
-        return Integer.parseInt(changeBase0(input, base));
+    public static String changeBase(int input, int base) {
+        return changeBase0(input, base);
+        //return Integer.parseInt(changeBase0(input, base));
     }
 
     private static String changeBase0(int input, int base) {
-        if (input < base)
+        if (input < base) {
+            if (input > 9)
+                return Character.toString((char)(input + 55));
+
             return Integer.toString(input);
+        }
+
+        if (input % base > 9)
+            return changeBase0(input / base, base) + (char)((input % base) + 55);
 
         return changeBase0(input / base, base) + Integer.toString(input % base);
     }
@@ -34,7 +42,6 @@ public class ChangeBaseMain {
 
             for (int i = 0; i < 3; i++)
                 System.out.println(changeBase(inputs.pop(), base));
-
         }
     }
 
