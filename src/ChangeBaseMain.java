@@ -15,11 +15,23 @@ public class ChangeBaseMain {
     }
 
 
+    /**
+     * Calls changeBase0
+     * @param input Number in base10 to convert
+     * @param base Target base to convert to
+     * @return String of the converted number
+     */
     public static String changeBase(int input, int base) {
         return changeBase0(input, base);
         //return Integer.parseInt(changeBase0(input, base));
     }
 
+    /**
+     * Converts a number in base10 to a target base
+     * @param input Number in base10 to convert
+     * @param base Target base to convert to
+     * @return String with the converted number
+     */
     private static String changeBase0(int input, int base) {
         if (input < base) {
             if (input > 9)
@@ -34,6 +46,10 @@ public class ChangeBaseMain {
         return changeBase0(input / base, base) + Integer.toString(input % base);
     }
 
+    /**
+     * Converts numbers between bases by using numbers from a file
+     * @param input Text file containing numbers to convert to different bases
+     */
     private static void runFromFile(File input) {
         ArrayDeque<Integer> inputs = FileUtils.readFile(input);
 
@@ -45,6 +61,9 @@ public class ChangeBaseMain {
         }
     }
 
+    /**
+     * Converts numbers between bases using input from keyboard and console
+     */
     private static void runFromKeyboard() {
         Scanner keyType = new Scanner(System.in);
         boolean running = true;
